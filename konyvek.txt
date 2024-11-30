@@ -1,5 +1,3 @@
-Got it! Here is the full text with the hyphens removed from the ISBNs:
-
 9783161484100;Penguin Books;A Nagy Gatsby;F. Scott Fitzgerald;Regény  
 9781861978769;HarperCollins;Harry Potter és a bölcsek köve;J.K. Rowling;Fantasy  
 9780140283297;HarperCollins;1984;George Orwell;Dystopia  
