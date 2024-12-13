@@ -202,7 +202,8 @@ class AdminAblak:
                 )
 
                 with open("konyvek.txt", 'a', encoding='utf-8') as f:
-                    f.write(f" {isbnEntry.get()};{kiadoEntry.get()};{cimEntry.get()};{szerzoEntry.get()};{kategoriaEntry.get()}")
+                    f.write(
+                        f"\n{isbnEntry.get()};{kiadoEntry.get()};{cimEntry.get()};{szerzoEntry.get()};{kategoriaEntry.get()}\n")
 
                 for widget in self.scrollable_frame.winfo_children():
                     widget.destroy()
