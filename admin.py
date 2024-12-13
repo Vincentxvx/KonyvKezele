@@ -30,20 +30,16 @@ class AdminAblak:
 
         self.szuro_opciok = ['Cím', 'Szerző', 'Kiadó', 'ISBN', 'Kategória']
         self.szuro_valtozo = StringVar(value=self.szuro_opciok[0])
-        self.szuro_legordulo = Combobox(self.kereso_kontener, textvariable=self.szuro_valtozo,
-                                        values=self.szuro_opciok, width=15, state="readonly")
+        self.szuro_legordulo = Combobox(self.kereso_kontener, textvariable=self.szuro_valtozo,values=self.szuro_opciok, width=15, state="readonly")
         self.szuro_legordulo.grid(row=0, column=0, padx=10, pady=5, sticky=W)
 
         self.kereso_mezo = Entry(self.kereso_kontener, font=("Arial", 12), width=50)
         self.kereso_mezo.grid(row=0, column=1, padx=10, pady=5, sticky='ew')
 
-        self.kereso_gomb = Button(self.kereso_kontener, text="Keresés",
-                                  command=self.kereses_vegrehajtasa, font=("Arial", 12))
+        self.kereso_gomb = Button(self.kereso_kontener, text="Keresés",command=self.kereses_vegrehajtasa, font=("Arial", 12))
         self.kereso_gomb.grid(row=0, column=2, padx=10, pady=5, sticky=E)
 
-        self.konyhozzaadas_gomb = Button(self.root, text="Könyv Hozzáadása", width=38, height=4,
-                                         font=("Arial", 12), bg="#A8764D",
-                                         command=self.konyhozzaadas)
+        self.konyhozzaadas_gomb = Button(self.root, text="Könyv Hozzáadása", width=38, height=4,font=("Arial", 12), bg="#A8764D",command=self.konyhozzaadas)
         self.konyhozzaadas_gomb.pack(side=LEFT, padx=20, pady=10)
 
         self.konyv_kontener = Frame(self.root)
@@ -81,6 +77,7 @@ class AdminAblak:
                         konyvek.append(konyv)
         except FileNotFoundError:
             messagebox.showerror("Hiba", f"A {fajlnev} fájl nem található!")
+
         return konyvek
 
     def konyvkartyak_megjelenites(self):
@@ -119,11 +116,44 @@ class AdminAblak:
             torol_gomb.pack(side=RIGHT, padx=5)
 
     def kereses_vegrehajtasa(self):
+        keresettkonyvek = []
         aktualis_szuro = self.szuro_valtozo.get()
-        keresett_kifejezes = self.kereso_mezo.get()
-        messagebox.showinfo("Keresés",
-                            f"Keresési szűrő: {aktualis_szuro}\n"
-                            f"Keresett kifejezés: {keresett_kifejezes}")
+        keresett_kifejezes = self.kereso_mezo.get().lower()
+
+        for widget in self.scrollable_frame.winfo_children():
+            widget.destroy()
+
+        try:
+            with open("konyvek.txt", 'r', encoding='utf-8') as f:
+                sorok = f.read().strip().split('\n')
+                for sor in sorok:
+                    adatok = sor.split(';')
+                    if len(adatok) == 5:
+                        egyezik = False
+                        if aktualis_szuro == "ISBN" and keresett_kifejezes in adatok[0].lower():
+                            egyezik = True
+                        elif aktualis_szuro == "Kiadó" and keresett_kifejezes in adatok[1].lower():
+                            egyezik = True
+                        elif aktualis_szuro == "Cím" and keresett_kifejezes in adatok[2].lower():
+                            egyezik = True
+                        elif aktualis_szuro == "Szerző" and keresett_kifejezes in adatok[3].lower():
+                            egyezik = True
+                        elif aktualis_szuro == "Kategória" and keresett_kifejezes in adatok[4].lower():
+                            egyezik = True
+
+                        if egyezik:
+                            keresettkonyv = KonyvKartya(adatok[2], adatok[3], adatok[1], adatok[0], adatok[4])
+                            keresettkonyvek.append(keresettkonyv)
+
+        except FileNotFoundError:
+            messagebox.showerror("Hiba", "A konyvek.txt fájl nem található!")
+
+        if not keresettkonyvek:
+            messagebox.showinfo("Keresés", "Nem található könyv a megadott keresési feltételnek.")
+
+        self.konyvek = keresettkonyvek
+        self.konyvkartyak_megjelenites()
+
 
     def konyhozzaadas(self):
         hozzaadablak = Toplevel()
