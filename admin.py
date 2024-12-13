@@ -4,6 +4,7 @@ from tkinter.ttk import Combobox
 from tkinter.messagebox import showinfo
 import tkinter.font as tkFont
 
+
 class KonyvKartya:
     def __init__(self, cim, szerzo, kiado, isbn, kategoria):
         self.cim = cim
@@ -11,6 +12,7 @@ class KonyvKartya:
         self.kiado = kiado
         self.isbn = isbn
         self.kategoria = kategoria
+
 
 class AdminAblak:
     def __init__(self, jogosultsag):
@@ -86,23 +88,25 @@ class AdminAblak:
             sor = i // 3
             oszlop = i % 3
 
-            kartya_frame = Frame(self.scrollable_frame, relief=RAISED, borderwidth=1,width=400, height=300, bg="#D2B48C")
+            kartya_frame = Frame(self.scrollable_frame, relief=RAISED, borderwidth=1, width=400, height=300,
+                                 bg="#D2B48C")
             kartya_frame.grid(row=sor, column=oszlop, padx=10, pady=10)
             kartya_frame.grid_propagate(False)
 
-            cim_label = Label(kartya_frame, text=konyv.cim, font=("Arial", 14, "bold"),wraplength=380, bg="#D2B48C")
+            cim_label = Label(kartya_frame, text=konyv.cim, font=("Arial", 14, "bold"), wraplength=380, bg="#D2B48C")
             cim_label.pack(pady=(10, 5))
 
-            szerzo_label = Label(kartya_frame, text=f"Szerző: {konyv.szerzo}",font=("Arial", 12), bg="#D2B48C")
+            szerzo_label = Label(kartya_frame, text=f"Szerző: {konyv.szerzo}", font=("Arial", 12), bg="#D2B48C")
             szerzo_label.pack()
 
-            kiado_label = Label(kartya_frame, text=f"Kiadó: {konyv.kiado}",font=("Arial", 12), bg="#D2B48C")
+            kiado_label = Label(kartya_frame, text=f"Kiadó: {konyv.kiado}", font=("Arial", 12), bg="#D2B48C")
             kiado_label.pack()
 
-            isbn_label = Label(kartya_frame, text=f"ISBN: {konyv.isbn}",font=("Arial", 12), bg="#D2B48C")
+            isbn_label = Label(kartya_frame, text=f"ISBN: {konyv.isbn}", font=("Arial", 12), bg="#D2B48C")
             isbn_label.pack()
 
-            kategoria_label = Label(kartya_frame, text=f"Kategória: {konyv.kategoria}",font=("Arial", 12), bg="#D2B48C")
+            kategoria_label = Label(kartya_frame, text=f"Kategória: {konyv.kategoria}", font=("Arial", 12),
+                                    bg="#D2B48C")
             kategoria_label.pack()
 
             gomb_frame = Frame(kartya_frame, bg="#D2B48C")
@@ -114,8 +118,6 @@ class AdminAblak:
             torol_gomb = Button(gomb_frame, text="Törlés", width=15)
             torol_gomb.pack(side=RIGHT, padx=5)
 
-            
-
     def kereses_vegrehajtasa(self):
         aktualis_szuro = self.szuro_valtozo.get()
         keresett_kifejezes = self.kereso_mezo.get()
@@ -124,14 +126,76 @@ class AdminAblak:
                             f"Keresett kifejezés: {keresett_kifejezes}")
 
     def konyhozzaadas(self):
-        showinfo("Test")
+        hozzaadablak = Toplevel()
+        hozzaadablak.title("Könyv Hozzáadása")
+        hozzaadablak.maxsize(300, 450)
+        hozzaadablak.minsize(300, 450)
+        hozzaadablak.geometry("300x450")
+        hozzaadablak.config(bg="#D3C2B2")
+
+        cimLabel = Label(hozzaadablak, text="Cím: ")
+        cimLabel.pack()
+        cimEntry = Entry(hozzaadablak, width=100)
+        cimEntry.pack(pady=10, padx=5)
+
+        szerzoLabel = Label(hozzaadablak, text="Szerzö: ")
+        szerzoLabel.pack()
+        szerzoEntry = Entry(hozzaadablak, width=100)
+        szerzoEntry.pack(pady=10, padx=5)
+
+        kiadoLabel = Label(hozzaadablak, text="Kiadó: ")
+        kiadoLabel.pack()
+        kiadoEntry = Entry(hozzaadablak, width=100)
+        kiadoEntry.pack(pady=10, padx=5)
+
+        isbnLabel = Label(hozzaadablak, text="ISBN: ")
+        isbnLabel.pack()
+        isbnEntry = Entry(hozzaadablak, width=100)
+        isbnEntry.pack(pady=10, padx=5)
+
+        kategoriaLabel = Label(hozzaadablak, text="Kategória: ")
+        kategoriaLabel.pack()
+        kategoriaEntry = Entry(hozzaadablak, width=100)
+        kategoriaEntry.pack(pady=10, padx=5)
+
+        def hozzaadas():
+            if not all([cimEntry.get(), szerzoEntry.get(), kiadoEntry.get(), isbnEntry.get(), kategoriaEntry.get()]):
+                messagebox.showerror("Hiba", "Minden mezőt ki kell tölteni!")
+                return
+            try:
+                ujkonyv = KonyvKartya(
+                    cimEntry.get(),
+                    szerzoEntry.get(),
+                    kiadoEntry.get(),
+                    isbnEntry.get(),
+                    kategoriaEntry.get()
+                )
+
+                with open("konyvek.txt", 'a', encoding='utf-8') as f:
+                    f.write(f" {isbnEntry.get()};{kiadoEntry.get()};{cimEntry.get()};{szerzoEntry.get()};{kategoriaEntry.get()}")
+
+                for widget in self.scrollable_frame.winfo_children():
+                    widget.destroy()
+                self.konyvek.append(ujkonyv)
+                self.konyvkartyak_megjelenites()
+
+                hozzaadablak.destroy()
+
+            except FileNotFoundError:
+                messagebox.showerror("Hiba", "Ez a fájl nem található!")
+
+        hozzaadasgomb = Button(hozzaadablak, text="HOZZÁADÁS", command=hozzaadas)
+        hozzaadasgomb.pack(pady=30, padx=5)
+
 
     def futtat(self):
         self.root.mainloop()
 
+
 def megnyitas():
     admin_ablak = AdminAblak("admin")
     admin_ablak.futtat()
+
 
 if __name__ == "__main__":
     megnyitas()
