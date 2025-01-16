@@ -1,0 +1,46 @@
+9780393037937;W.W. Norton & Company;A kis herceg;Antoine de Saint-Exupéry;Mese
+9780452276605;Penguin Classics;Moby Dick;Herman Melville;Kaland
+9780553812299;Bantam Books;A Gyűrűk Ura: A társaság;J.R.R. Tolkien;Fantasy
+9781502137706;Crown Publishing Group;A boldogság kódja;Dan Harris;Önfejlesztés
+9780374149271;Farrar, Straus and Giroux;A szél nevű fa;Ken Kesey;Történelmi regény
+9781250104536;Minotaur Books;Sherlock Holmes kalandjai;Arthur Conan Doyle;Detektív
+9780452271670;Penguin Classics;Száz év magány;Gabriel García Márquez;Magyar regény
+9780375408061;Knopf Doubleday;Szép új világ;Aldous Huxley;Dystopia
+9781617764239;Simon & Schuster;A titok;Rhonda Byrne;Önsegítő
+9781848167759;Vintage Books;A nagy álmom;Margaret Atwood;Szórakoztató irodalom
+9780394747041;Pantheon Books;Szellemírók;John Grisham;Krimi
+9781594482753;Viking Press;A harmadik ember;Graham Greene;Krimi
+9780349124230;Time Warner Books;A szürke ötven árnyalata;E.L. James;Romantikus regény
+9780062457710;HarperCollins;A sötét elme;Stephen King;Horror
+9781402891444;Random House;A szabadulás művészete;Timothy Snyder;Történelem
+9780060935467;HarperCollins;A test;Bill Bryson;Ismeretterjesztés
+9780349101483;Little, Brown and Company;A csillagok között;Matthew McConaughey;Önéletrajz
+9780553263700;Bantam Books;A kém;John le Carré;Kémregény
+9781439126250;St. Martin's Griffin;A költészet világa;David Berman;Művészet
+9780735202817;Grand Central Publishing;Árnyék az éjben;Dan Brown;Krimi
+9781451667606;Scribner;Széljegyzetek;Stephen King;Horror
+9780061758281;HarperCollins;Szentháromság;Ted Dekker;Thriller
+9780312563533;St. Martin's Press;A tanítványok;John Green;Fiatal felnőttek
+9781629745728;Algonquin Books;A végtelen út;Colleen Hoover;Romantikus regény
+9780517290030;Crown Publishing Group;A mi történetünk;John Grisham;Dráma
+9780307351017;Knopf Doubleday;A sötét torony;Stephen King;Fantasy
+9781424111865;HarperCollins;A gyűjtő;John Fowles;Psichológiai thriller
+9781501125317;Crown Publishing Group;A becsület kódja;David Baldacci;Thriller
+9780452284990;Penguin Books;A napfény íze;Jodi Picoult;Romantikus regény
+9781567316704;Viking Press;Az utolsó tánc;Toni Morrison;Romantikus regény
+9781594485143;Random House;Az elnyelt világ;Toni Morrison;Történelem
+9780553812428;Penguin Books;Pride and Prejudice;Jane Austen;Romantikus regény
+9781476705328;Hachette Books;Bíbor hercegnő;Sharon Kay Penman;Történelem
+9780307744231;Random House;Szívem, szívem;Nicholas Sparks;Romantikus regény
+9780743246275;Simon & Schuster;Shantaram;Gregory David Roberts;Akció
+9781476747701;Scribner;Két világ között;Jodi Picoult;Dráma
+9780141195965;Penguin Books;A három testőr;Alexandre Dumas;Kaland
+9780061886616;HarperCollins;Képzelt világ;George R. R. Martin;Fantasy
+9781402888650;W.W. Norton & Company;Az én személyes istenem;Terry Pratchett;Humor
+9781594482784;Macmillan;A regények eljövetele;Haruki Murakami;Szórakoztató irodalom
+9780786867463;Random House;Az üvegnyomor;Dave Eggers;Társadalomkritika
+123456789;MGK;Az ember tragédiája;Madách Imre;Dráma
+20070426;Rasch;test;Vincent;Test
+20070426;Rasch;Test;Vincent;Vicc
+9781594486928;Riverhead Books;Az elrabolt kislány;Emma ;Psychological thriller
+97815021377065;Crown Publishing Group;A boldogság kódja;Dan Harris;Önfejlesztés
