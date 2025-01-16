@@ -30,19 +30,16 @@ class AdminAblak:
 
         self.szuro_opciok = ['Cím', 'Szerző', 'Kiadó', 'ISBN', 'Kategória']
         self.szuro_valtozo = StringVar(value=self.szuro_opciok[0])
-        self.szuro_legordulo = Combobox(self.kereso_kontener, textvariable=self.szuro_valtozo, values=self.szuro_opciok,
-                                        width=15, state="readonly")
+        self.szuro_legordulo = Combobox(self.kereso_kontener, textvariable=self.szuro_valtozo, values=self.szuro_opciok,width=15, state="readonly")
         self.szuro_legordulo.grid(row=0, column=0, padx=10, pady=5, sticky=W)
 
         self.kereso_mezo = Entry(self.kereso_kontener, font=("Arial", 12), width=50)
         self.kereso_mezo.grid(row=0, column=1, padx=10, pady=5, sticky='ew')
 
-        self.kereso_gomb = Button(self.kereso_kontener, text="Keresés", command=self.kereses_vegrehajtasa,
-                                  font=("Arial", 12))
+        self.kereso_gomb = Button(self.kereso_kontener, text="Keresés", command=self.kereses_vegrehajtasa,font=("Arial", 12))
         self.kereso_gomb.grid(row=0, column=2, padx=10, pady=5, sticky=E)
 
-        self.konyhozzaadas_gomb = Button(self.root, text="Könyv Hozzáadása", width=38, height=4, font=("Arial", 12),
-                                         bg="#A8764D", command=self.konyhozzaadas)
+        self.konyhozzaadas_gomb = Button(self.root, text="Könyv Hozzáadása", width=38, height=4, font=("Arial", 12),bg="#A8764D", command=self.konyhozzaadas)
         self.konyhozzaadas_gomb.pack(side=LEFT, padx=20, pady=10)
 
         self.konyv_kontener = Frame(self.root)
@@ -159,12 +156,9 @@ class AdminAblak:
                 messagebox.showerror("Hiba", "Minden mezőt ki kell tölteni!")
                 return
 
-            self.konyv_torlese(konyv, frissites_nelkul=True)
-
             try:
                 with open("konyvek.txt", 'a', encoding='utf-8') as f:
-                    f.write(
-                        f"\n{isbnEntry.get()};{kiadoEntry.get()};{cimEntry.get()};{szerzoEntry.get()};{kategoriaEntry.get()}\n")
+                    f.write(f"\n{isbnEntry.get()};{kiadoEntry.get()};{cimEntry.get()};{szerzoEntry.get()};{kategoriaEntry.get()}\n")
 
                 konyv.isbn = isbnEntry.get()
                 konyv.kiado = kiadoEntry.get()
@@ -299,8 +293,7 @@ class AdminAblak:
                 )
 
                 with open("konyvek.txt", 'a', encoding='utf-8') as f:
-                    f.write(
-                        f"\n{isbnEntry.get()};{kiadoEntry.get()};{cimEntry.get()};{szerzoEntry.get()};{kategoriaEntry.get()}\n")
+                    f.write(f"\n{isbnEntry.get()};{kiadoEntry.get()};{cimEntry.get()};{szerzoEntry.get()};{kategoriaEntry.get()}\n")
 
                 for widget in self.scrollable_frame.winfo_children():
                     widget.destroy()
